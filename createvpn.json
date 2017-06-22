@@ -105,7 +105,22 @@
             "CidrBlock": "10.0.22.0/24",
             "Tags": ["-"]
           }
+        },
+        
+        "igwSpinUp": {
+          "Type": "AWS::EC2::InternetGateway",
+          "Properties": {
+            "Tags": ["-"]
+          }
+        },
+        "AttachGateway": {
+          "Type": "AWS::EC2::VPCGatewayAttachment",
+          "Properties": {
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "InternetGatewayId": { "Ref": "igwSpinUp" }
+          }
         }
+        
     },
     "Outputs": {
 
