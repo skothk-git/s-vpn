@@ -18,94 +18,94 @@
           "Type": "AWS::EC2::VPC",
           "Properties": {
             "CidrBlock": "10.0.0.0/16",
-            "Tags": []
+            "Tags" : [ { "Key" : "Name", "Value" : "VPCSpinUp" } ]
           }
         },
         "snSpinUpPublicA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1a",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.0.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone A" } ]
           }
         },
         "snSpinUpPublicB": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1b",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.1.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone B" } ]
           }
         },
         "snSpinUpPublicC": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1c",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.2.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone C" } ]
           }
         },
         "snSpinUpAppA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1a",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.10.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone A" } ]
           }
         },
         "snSpinUpAppB": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1b",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.11.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone B" } ]
           }
         },
         "snSpinUpAppC": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1c",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.12.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone C" } ]
           }
         },
         "snSpinUpDbA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1a",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.20.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone A" } ]
           }
         },
         "snSpinUpDbB": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1b",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.21.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone B" } ]
           }
         },
         "snSpinUpDbC": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
-            "AvailabilityZone": "-",
+            "AvailabilityZone": "eu-west-1c",
             "VpcId": { "Ref" : "VPCSpinUp" },
             "CidrBlock": "10.0.22.0/24",
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone C" } ]
           }
         },
         "igwSpinUp": {
           "Type": "AWS::EC2::InternetGateway",
           "Properties": {
-            "Tags": ["-"]
+            "Tags" : [ { "Key" : "Name", "Value" : "SpinUp VPC Internet Gateway" } ]
           }
         },
         "AttachGateway": {
