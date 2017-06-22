@@ -1,6 +1,6 @@
 {
 "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "3 tier /24 subnet VPC configuration | Public/App/DB",
+    "Description": "3 zone/3 tier /24 subnet VPC configuration | Public/App/DB",
     "Metadata": {
 
     },
@@ -14,18 +14,18 @@
 
     },
     "Resources": {
-        "VPCSpinUp": {
+        "vpcSpinUp": {
           "Type": "AWS::EC2::VPC",
           "Properties": {
             "CidrBlock": "10.0.0.0/16",
-            "Tags" : [ { "Key" : "Name", "Value" : "VPCSpinUp" } ]
+            "Tags" : [ { "Key" : "Name", "Value" : "vpcSpinUp" } ]
           }
         },
         "snSpinUpPublicA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1a",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.0.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone A" } ]
           }
@@ -34,7 +34,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1b",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.1.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone B" } ]
           }
@@ -43,7 +43,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1c",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.2.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Public Subnet Zone C" } ]
           }
@@ -52,7 +52,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1a",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.10.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone A" } ]
           }
@@ -61,7 +61,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1b",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.11.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone B" } ]
           }
@@ -70,7 +70,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1c",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.12.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private App Subnet Zone C" } ]
           }
@@ -79,7 +79,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1a",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.20.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone A" } ]
           }
@@ -88,7 +88,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1b",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.21.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone B" } ]
           }
@@ -97,7 +97,7 @@
           "Type": "AWS::EC2::Subnet",
           "Properties": {
             "AvailabilityZone": "eu-west-1c",
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "CidrBlock": "10.0.22.0/24",
             "Tags" : [ { "Key" : "Name", "Value" : "Private DB Subnet Zone C" } ]
           }
@@ -111,7 +111,7 @@
         "AttachGateway": {
           "Type": "AWS::EC2::VPCGatewayAttachment",
           "Properties": {
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "InternetGatewayId": { "Ref": "igwSpinUp" }
           }
         },
@@ -119,14 +119,14 @@
         "rtPublic": {
           "Type": "AWS::EC2::RouteTable",
           "Properties": {
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "Tags" : [ { "Key" : "Name", "Value" : "Public Routing Table" } ]
           }
         },
          "rtPrivate": {
           "Type": "AWS::EC2::RouteTable",
           "Properties": {
-            "VpcId": { "Ref" : "VPCSpinUp" },
+            "VpcId": { "Ref" : "vpcSpinUp" },
             "Tags" : [ { "Key" : "Name", "Value" : "Private Routing Table" } ]
           }
         },
@@ -162,7 +162,7 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpAppA"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpAppA"}
           }
         },
@@ -171,7 +171,7 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpAppB"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpAppB"}
           }
         },
@@ -180,7 +180,7 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpAppC"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpAppC"}
           }
         },
@@ -189,7 +189,7 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpDbA"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpDbA"}
           }
         },
@@ -198,7 +198,7 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpDbB"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpDbB"}
           }
         },
@@ -207,11 +207,10 @@
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
           "DependsOn" : ["rtPublic","snSpinUpDbC"],
           "Properties": {
-            "RouteTableId": {"Ref":"rtPublic"},
+            "RouteTableId": {"Ref":"rtPrivate"},
             "SubnetId": {"Ref":"snSpinUpDbC"}
           }
-        },
-
+        }
     },
     "Outputs": {
 
