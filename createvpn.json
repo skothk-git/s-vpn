@@ -131,33 +131,87 @@
           }
         },
         
-        "rtaPublic": {
+        "rtaSpinUpPublicA": {
           "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpPublicA"],
           "Properties": {
             "RouteTableId": {"Ref":"rtPublic"},
-            "SubnetId": [
-              {"Ref":"snSpinUpPublicA"},
-              {"Ref":"snSpinUpPublicB"},
-              {"Ref":"snSpinUpPublicC"}
-             ]
-
+            "SubnetId": {"Ref":"snSpinUpPublicA"}
           }
         },
-        "rtaPrivate": {
-          "Type": "AWS::EC2::SubnetRouteTableAssociation",
-          "Properties": {
-            "RouteTableId": {"Ref":"rtPrivate"},
-            "SubnetId":[
-              {"Ref":"snSpinUpAppA"},
-              {"Ref":"snSpinUpAppB"},
-              {"Ref":"snSpinUpAppC"},
-              {"Ref":"snSpinUpDbA"},
-              {"Ref":"snSpinUpDbB"},
-              {"Ref":"snSpinUpDbC"}
-            ]
 
+        "rtaSpinUpPublicB": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpPublicB"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpPublicB"}
           }
-        }
+        },
+
+        "rtaSpinUpPublicC": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpPublicC"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpPublicC"}
+          }
+        },
+
+        "rtaSpinUpAppA": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpAppA"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpAppA"}
+          }
+        },
+
+        "rtaSpinUpAppB": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpAppB"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpAppB"}
+          }
+        },
+
+        "rtaSpinUpAppC": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpAppC"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpAppC"}
+          }
+        },
+
+        "rtaSpinUpDbA": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpDbA"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpDbA"}
+          }
+        },
+
+        "rtaSpinUpDbB": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpDbB"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpDbB"}
+          }
+        },
+
+        "rtaSpinUpDbC": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "DependsOn" : ["rtPublic","snSpinUpDbC"],
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": {"Ref":"snSpinUpDbC"}
+          }
+        },
+
     },
     "Outputs": {
 
