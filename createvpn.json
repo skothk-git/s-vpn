@@ -1,0 +1,113 @@
+// 3 tier /24 subnet VPC configuration | Public/App/DB
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "",
+    "Metadata": {
+
+    },
+    "Parameters": {
+    
+    },
+    "Mappings": {
+
+    },
+    "Conditions": {
+
+    },
+    "Resources": {
+        "VPCSpinUp": {
+          "Type": "AWS::EC2::VPC",
+          "Properties": {
+            "CidrBlock": "10.0.0.0/16",
+            "Tags": []
+          }
+        },
+// Public subnets for zones A, B, C
+        "snSpinUpPublicA": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.0.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpPublicB": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.1.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpPublicC": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.2.0/24",
+            "Tags": ["-"]
+          }
+        },
+// Private App subnets for zones A, B, C
+        "snSpinUpAppA": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.10.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpAppB": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.11.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpAppC": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.12.0/24",
+            "Tags": ["-"]
+          }
+        },
+// Private App subnets for zones A, B, C
+        "snSpinUpDbA": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.20.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpDbB": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.21.0/24",
+            "Tags": ["-"]
+          }
+        },
+        "snSpinUpDbC": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "-",
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "CidrBlock": "10.0.22.0/24",
+            "Tags": ["-"]
+          }
+        }
+    },
+    "Outputs": {
+
+    }
+}
