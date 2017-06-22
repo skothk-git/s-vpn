@@ -1,7 +1,6 @@
-// 3 tier /24 subnet VPC configuration | Public/App/DB
 {
 "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "",
+    "Description": "3 tier /24 subnet VPC configuration | Public/App/DB",
     "Metadata": {
 
     },
