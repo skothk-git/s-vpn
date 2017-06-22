@@ -106,13 +106,14 @@
             "Tags": ["-"]
           }
         },
-        
+// Create internet gateway
         "igwSpinUp": {
           "Type": "AWS::EC2::InternetGateway",
           "Properties": {
             "Tags": ["-"]
           }
         },
+// Attach internet gateway to VPC
         "AttachGateway": {
           "Type": "AWS::EC2::VPCGatewayAttachment",
           "Properties": {
