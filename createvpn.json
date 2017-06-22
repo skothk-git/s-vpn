@@ -114,8 +114,50 @@
             "VpcId": { "Ref" : "VPCSpinUp" },
             "InternetGatewayId": { "Ref": "igwSpinUp" }
           }
-        }
+        },
+
+        "rtPublic": {
+          "Type": "AWS::EC2::RouteTable",
+          "Properties": {
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "Tags" : [ { "Key" : "Name", "Value" : "Public Routing Table" } ]
+          }
+        },
+         "rtPrivate": {
+          "Type": "AWS::EC2::RouteTable",
+          "Properties": {
+            "VpcId": { "Ref" : "VPCSpinUp" },
+            "Tags" : [ { "Key" : "Name", "Value" : "Private Routing Table" } ]
+          }
+        },
         
+        "rtaPublic": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPublic"},
+            "SubnetId": [
+              {"Ref":"snSpinUpPublicA"},
+              {"Ref":"snSpinUpPublicB"},
+              {"Ref":"snSpinUpPublicC"}
+             ]
+
+          }
+        },
+        "rtaPrivate": {
+          "Type": "AWS::EC2::SubnetRouteTableAssociation",
+          "Properties": {
+            "RouteTableId": {"Ref":"rtPrivate"},
+            "SubnetId":[
+              {"Ref":"snSpinUpAppA"},
+              {"Ref":"snSpinUpAppB"},
+              {"Ref":"snSpinUpAppC"},
+              {"Ref":"snSpinUpDbA"},
+              {"Ref":"snSpinUpDbB"},
+              {"Ref":"snSpinUpDbC"}
+            ]
+
+          }
+        }
     },
     "Outputs": {
 
