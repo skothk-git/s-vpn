@@ -21,7 +21,6 @@
             "Tags": []
           }
         },
-// Public subnets for zones A, B, C
         "snSpinUpPublicA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
@@ -49,7 +48,6 @@
             "Tags": ["-"]
           }
         },
-// Private App subnets for zones A, B, C
         "snSpinUpAppA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
@@ -77,7 +75,6 @@
             "Tags": ["-"]
           }
         },
-// Private App subnets for zones A, B, C
         "snSpinUpDbA": {
           "Type": "AWS::EC2::Subnet",
           "Properties": {
@@ -105,14 +102,12 @@
             "Tags": ["-"]
           }
         },
-// Create internet gateway
         "igwSpinUp": {
           "Type": "AWS::EC2::InternetGateway",
           "Properties": {
             "Tags": ["-"]
           }
         },
-// Attach internet gateway to VPC
         "AttachGateway": {
           "Type": "AWS::EC2::VPCGatewayAttachment",
           "Properties": {
